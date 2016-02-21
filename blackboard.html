@@ -1,0 +1,31 @@
+<html>
+<head>
+	<script type="text/javascript">
+	var coordenadaAnterior=null;
+	var coordenadaActual=null;
+	function mostrarCoordenadas(evento){
+		//document.getElementById('coordenadas').innerHTML='Done!';
+		document.getElementById('coordenadas').innerHTML=evento.clientX+' '+evento.clientY;
+
+		//document.getElementById('cuadrito').style.top=evento.clientY-10;
+		//document.getElementById('cuadrito').style.left=evento.clientX-10;
+		//ponerPunto(new Coordenada(evento.clientX,evento.clientY));
+	}
+	function mostrarLinea(evento){
+		coordenadaAnterior=coordenadaActual;
+		coordenadaActual=new Coordenada(evento.clientX,evento.clientY);
+		if(coordenadaAnterior!=null){
+			trazarLinea(coordenadaAnterior,coordenadaActual);
+		}
+		mostrarCoordenadas(evento);
+	}
+	</script>
+	<script type="text/javascript" src="lineas.js"></script>
+</head>
+<!-- <body bgcolor="#000000" text="#FFFFFF" onclick="mostrarCoordenadas(event);"> -->
+<body bgcolor="#000000" text="#FFFFFF" onclick="mostrarLinea(event);">
+	<div id="coordenadas" style="width: 900px; height: 800px; position: fixed; top: 30px; left: 30px;">-.--.--.--.--.--.-</div>
+	<div id="cuadrito" style="width: 20px; height: 20px; position: fixed; top: 100px; left: 100px; background-color: #00F">&nbsp;</div>
+&nbsp;
+</body>
+</html>
